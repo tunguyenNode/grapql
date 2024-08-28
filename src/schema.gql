@@ -1,0 +1,85 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  lastName: String
+  firstName: String
+  email: String!
+  status: Status!
+  password: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+enum Status {
+  Active
+  Inactive
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type meta {
+  total: Float!
+  lastPage: Float!
+  currentPage: Float!
+  perPage: Float!
+  prev: String!
+  next: String!
+}
+
+type ResponsePaginationEntity {
+  data: [User!]!
+  meta: meta!
+}
+
+type AuthResponse {
+  id: String!
+  lastName: String
+  firstName: String
+  email: String!
+  status: Status!
+  password: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  access_token: String!
+  refresh_token: String!
+}
+
+type Query {
+  users(getUserInput: PaginationInput!): ResponsePaginationEntity!
+  user(id: String!): User!
+}
+
+input PaginationInput {
+  page: Float!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  login(authInput: LoginInput!): AuthResponse!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+}
+
+input UpdateUserInput {
+  password: String!
+  firstName: String!
+  lastName: String!
+  id: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}

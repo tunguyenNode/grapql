@@ -1,0 +1,49 @@
+type User {
+    email: String
+    firstName:String
+    lastName:String
+}
+
+type Meta {
+    total: Int
+    lastPage: Int
+    currentPage: Int
+    perPage: Int
+    prev: Int
+    next: Int
+}
+
+type ResponseUser {
+    meta: Meta
+    data: [User]!
+}
+
+input CreateUserInput {
+    email: String
+    firstName:String
+    lastName:String
+    password: String
+}
+
+input UpdateUserInput {
+    id: Int!
+    email: String
+    firstName:String
+    lastName:String
+    password: String
+}
+
+input PaginationInput {
+    page: Int
+}
+
+
+type Query {
+    users(paginationInput: PaginationInput!): User
+    user(id: Int!): User
+}
+
+type Mutation {
+    createUser(createUserInput: CreateUserInput!): User!
+    updateUser(updateUserInput: UpdateUserInput!): User!
+}

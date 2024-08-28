@@ -1,0 +1,13 @@
+type Auth {
+    access_token: String
+}
+
+input CreateAuthInput {
+    # Example field (placeholder)
+    email: String!
+    password: String!
+}
+
+type Mutation {
+    login(createAuthInput: CreateAuthInput!): Auth!
+}
