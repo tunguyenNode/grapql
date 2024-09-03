@@ -27,9 +27,6 @@ export class User {
   status: Status;
 
   @Field()
-  password?: string;
-
-  @Field()
   createdAt?: Date;
 
   @Field()

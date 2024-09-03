@@ -4,8 +4,8 @@ import { User } from '../../user/entities/user.entity';
 @ObjectType()
 export class AuthResponse extends User {
   @Field()
-  access_token: string;
+  refreshToken: string;
 
   @Field()
-  refresh_token: string;
+  accessToken: string;
 }

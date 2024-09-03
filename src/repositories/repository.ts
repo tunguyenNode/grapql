@@ -52,4 +52,10 @@ export class Repository<T> implements RepositoryInterface<T> {
       },
     );
   }
+
+  public async createMany(data: Array<any>) {
+    return this.model.createMany({
+      data,
+    });
+  }
 }

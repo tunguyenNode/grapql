@@ -16,4 +16,6 @@ export interface RepositoryInterface<T> {
     orderBy?: object;
     page?: number;
   }): Promise<PaginatedResult<T>>;
+
+  createMany(data: Array<T>): Promise<Array<T>>;
 }

@@ -8,7 +8,6 @@ type User {
   firstName: String
   email: String!
   status: Status!
-  password: String
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -43,11 +42,10 @@ type AuthResponse {
   firstName: String
   email: String!
   status: Status!
-  password: String
   createdAt: DateTime
   updatedAt: DateTime
-  access_token: String!
-  refresh_token: String!
+  refreshToken: String!
+  accessToken: String!
 }
 
 type Query {

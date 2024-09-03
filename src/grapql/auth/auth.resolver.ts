@@ -10,10 +10,8 @@ export class AuthResolver {
 
   @Mutation(() => AuthResponse, { name: 'login' })
   async login(@Args('authInput') loginInput: LoginInput, @Context() ctx) {
-    // const req = ctx;
-    // console.log(req.req.headers['user-agent']);
     const user = await this.authService.validateUser(loginInput);
-    if (!user) {
+    if (user === false) {
       throw new HttpException(
         'wrong email or password',
         HttpStatus.UNAUTHORIZED,

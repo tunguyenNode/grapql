@@ -25,11 +25,11 @@ import { TokenRepository } from './repositories/token.repository';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       debug: true,
       context: ({ req, res }) => ({ req, res }),
-      // formatError: (err) => ({
-      //   ...err,
-      //   extensions: undefined,
-      //   originalError: err?.extensions.originalError,
-      // }),
+      formatError: (err) => ({
+        ...err,
+        extensions: undefined,
+        originalError: err?.extensions.originalError,
+      }),
     }),
     JwtModule.register({
       secret: 'secretKey', // Replace with your own secret
