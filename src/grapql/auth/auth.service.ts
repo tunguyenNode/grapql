@@ -5,10 +5,10 @@ import { PrismaService } from '../../prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { LoginInput } from './dto/login.input';
-import { DeviceService } from '../../services/device/device.service';
 import { User } from '@prisma/client';
-import { TokenService } from '../../services/token/token.service';
 import { v4 as uuidv4 } from 'uuid';
+import { UserService, TokenService, DeviceService } from 'src/services';
+import { SignupInput } from './dto/signup.input';
 
 @Injectable()
 export class AuthService {
@@ -17,6 +17,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private readonly deviceService: DeviceService,
     private readonly tokenService: TokenService,
+    private readonly userService: UserService
   ) {}
 
   /**
@@ -82,4 +83,13 @@ export class AuthService {
       refreshToken,
     };
   }
+
+  /**
+   * 
+   * @param createData 
+   * @returns 
+   */
+  async createUser (createData: SignupInput) {
+    return this.userService.createUser(createData)
+  } 
 }

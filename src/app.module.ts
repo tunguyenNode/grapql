@@ -16,6 +16,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { UserRepository } from './repositories/user.repository';
 import { DeviceRepository } from './repositories/device.repository';
 import { TokenRepository } from './repositories/token.repository';
+import { UserService } from './services/user/user.service';
 
 @Module({
   imports: [
@@ -49,6 +50,7 @@ import { TokenRepository } from './repositories/token.repository';
     UserRepository,
     DeviceRepository,
     TokenRepository,
+    UserService,
   ],
 })
 export class AppModule {}
