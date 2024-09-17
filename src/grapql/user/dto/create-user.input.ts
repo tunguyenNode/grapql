@@ -1,4 +1,4 @@
-import { Field, InputType } from '@nestjs/graphql';
+import { Field, InputType, registerEnumType } from '@nestjs/graphql';
 import {
   IsEmail,
   IsString,
@@ -6,6 +6,14 @@ import {
   MinLength,
 } from '@nestjs/class-validator';
 import { isUnique } from '../../../validations';
+
+enum RoleType {
+  ADMIN = 'ADMIN',
+  USER = 'USER',
+  MOD = 'MOD',
+}
+
+registerEnumType(RoleType, { name: 'RoleType' });
 
 @InputType()
 export class CreateUserInput {
@@ -25,4 +33,7 @@ export class CreateUserInput {
 
   @Field()
   lastName: string;
+
+  @Field()
+  role: RoleType;
 }
