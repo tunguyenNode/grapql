@@ -3,6 +3,8 @@ import { AuthService } from './auth.service';
 import { LoginInput } from './dto/login.input';
 import { AuthResponse } from './responses/auth.response';
 import { HttpException, HttpStatus } from '@nestjs/common';
+import { SignupResponse } from './responses/signup.response';
+import { SignupInput } from './dto/signup.input';
 
 @Resolver('Auth')
 export class AuthResolver {
@@ -18,5 +20,10 @@ export class AuthResolver {
       );
     }
     return this.authService.login(user, ctx);
+  }
+
+  @Mutation( () => SignupResponse, {name: "signup"})
+  async signup(@Args('signupInput') signupInput: SignupInput){
+    return this.authService.createUser(signupInput)
   }
 }

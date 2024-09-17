@@ -48,6 +48,16 @@ type AuthResponse {
   accessToken: String!
 }
 
+type SignupResponse {
+  id: String!
+  lastName: String
+  firstName: String
+  email: String!
+  status: Status!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
 type Query {
   users(getUserInput: PaginationInput!): ResponsePaginationEntity!
   user(id: String!): User!
@@ -61,6 +71,7 @@ type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   login(authInput: LoginInput!): AuthResponse!
+  signup(signupInput: SignupInput!): SignupResponse!
 }
 
 input CreateUserInput {
@@ -80,4 +91,11 @@ input UpdateUserInput {
 input LoginInput {
   email: String!
   password: String!
+}
+
+input SignupInput {
+  email: String!
+  password: String!
+  firstName: String!
+  lastName: String!
 }
